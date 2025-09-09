@@ -1,8 +1,12 @@
-﻿node_modules/
+﻿# Node and build
+node_modules/
 Frontend-Test-Submission/node_modules/
 Frontend-Test-Submission/build/
 Frontend-Test-Submission/dist/
 package-lock.json
 *.log
-.vscode/
+
+# OS / IDE
 .DS_Store
+.vscode/
+.idea/
