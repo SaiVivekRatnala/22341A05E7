@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 22341A05E7 - URL Shortener (Frontend Submission)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
+This project implements a client-side URL Shortener named **TinyLink** using React and Material UI.  
+The application allows users to create short links, redirect through them, and view analytics such as the number of clicks, timestamps, and source details.  
+All data is managed on the client side using `localStorage`, and a custom Logging Middleware is integrated to capture application events.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Architecture
 
-### `npm start`
+The application is organized into the following key parts:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Pages
+- **Shortener Page (`/`)**  
+  Users can shorten up to 5 URLs at a time. Each entry allows:
+  - Original long URL
+  - Optional validity (in minutes, defaults to 30 minutes)
+  - Optional custom shortcode
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Statistics Page (`/stats`)**  
+  Displays all shortened URLs with:
+  - Creation & expiry times
+  - Total number of clicks
+  - Detailed click logs (timestamp, source, coarse location)
 
-### `npm test`
+- **Redirect Handler (`/:shortcode`)**  
+  Handles client-side redirection. When a user visits a short URL, it:
+  - Logs the click event
+  - Redirects to the original long URL
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Logs Page (`/logs`)**  
+  Shows structured events captured by the Logging Middleware, including:
+  - App start events
+  - Short URL creation
+  - Redirect clicks
+  - Theme toggles and errors
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Storage
+- **localStorage** is used to persist:
+  - URL mappings
+  - Click data
+  - Application logs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This ensures the app runs entirely in the browser without needing a backend.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### 3. Logging Middleware
+A custom logging module records important events in a structured JSON format.  
+Each log entry includes:
+- Event name (e.g., `shorten.created`, `url.clicked`)
+- Timestamp
+- Metadata (e.g., shortcode, URL, theme mode)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Logs can be exported/imported for review.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. User Interface
+- **Material UI** is used for styling components such as forms, buttons, tables, and app bars.
+- The app supports **Light/Dark theme toggling**.
+- The design focuses on being simple, uncluttered, and easy to navigate.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## How to Run Locally
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SaiVivekRatnala/22341A05E7.git
+   cd 22341A05E7/Frontend-Test-Submission
+2.Install dependencies:
+   ```bash
+    npm install
+3.Start the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm start
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open your browser at:
 
-### Analyzing the Bundle Size
+http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
