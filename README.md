@@ -1,21 +1,4 @@
 # 22341A05E7 - URL Shortener (Frontend Submission)
-
-## Project Overview
-This project implements a client-side URL Shortener named **TinyLink** using React and Material UI.  
-The application allows users to create short links, redirect through them, and view analytics such as the number of clicks, timestamps, and source details.  
-All data is managed on the client side using `localStorage`, and a custom Logging Middleware is integrated to capture application events.
-
----
-
-## Architecture
-
-The application is organized into the following key parts:
-
-### 1. Pages
-- **Shortener Page (`/`)**  
-  Users can shorten up to 5 URLs at a time. Each entry allows:
-  - Original long URL
-  - Optional validity (in minutes, defaults to 30 minutes)
   - Optional custom shortcode
 
 - **Statistics Page (`/stats`)**  
@@ -64,7 +47,32 @@ Logs can be exported/imported for review.
 - The app supports **Light/Dark theme toggling**.
 - The design focuses on being simple, uncluttered, and easy to navigate.
 
----
+--- url-shortener/
+├── Frontend-Test-Submission/ # React app
+│ ├── public/ # Static assets
+│ ├── src/ # Source code
+│ │ ├── components/ # Reusable UI
+│ │ ├── logging/ # Middleware
+│ │ ├── pages/ # App pages
+│ │ ├── storage/ # localStorage helpers
+│ │ ├── theme/ # Material UI theme
+│ │ └── utils/ # Utility functions
+│ ├── package.json
+│ └── README.md
+├── Logging-Middleware/ # Standalone logger
+│ └── LoggingMiddleware.js
+├── screenshots/ # Screenshots
+└── README.md 
+## Screenshots
+
+### Shortener Page (Desktop)
+![Shortener Page Desktop](./Screenshot%202025-09-09%20121027.png)
+
+### Statistics Page
+![Statistics Page](./Screenshot%202025-09-09%20121036.png)
+
+### Logs Page
+![Logs Page](./Screenshot%202025-09-09%20121047.png)
 
 ## How to Run Locally
 
