@@ -1,0 +1,8 @@
+﻿node_modules/
+Frontend-Test-Submission/node_modules/
+Frontend-Test-Submission/build/
+Frontend-Test-Submission/dist/
+package-lock.json
+*.log
+.vscode/
+.DS_Store
